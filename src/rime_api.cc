@@ -1002,6 +1002,13 @@ void RimeSetCaretPos(RimeSessionId session_id, size_t caret_pos) {
   return ctx->set_caret_pos(caret_pos);
 }
 
+#ifndef RimeStringSlice
+typedef struct rime_string_slice_t {
+  const char* str;
+  size_t length;
+} RimeStringSlice;
+#endif
+
 RimeStringSlice RimeGetStateLabelAbbreviated(RimeSessionId session_id,
                                              const char* option_name,
                                              Bool state,
